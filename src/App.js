@@ -1,5 +1,6 @@
 import './App.css';
 import Dashboard from './components/Dashboard';
+import AddBill from './components/admin';
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
       </a>
 
       </header>
-      <div className="wrapper">
-        <Dashboard />
+      <div id="bills">
+        <AddBill />
       </div>
     </div>
   );
