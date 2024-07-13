@@ -1,132 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { Badge, Button, Container, Row, Col, Stack } from 'react-bootstrap';
+import Bills from './bills';
+import Utilities from './utilities';
+import Meters from './meters';
+import Providers from './providers';
 
-const backend_api = process.env.REACT_APP_BACKEND_URL+':'+process.env.REACT_APP_BACKEND_PORT+process.env.REACT_APP_BACKEND_API_TRUNK;
+const SpacedBadge = styled(Badge)`
+  margin-bottom: 10px;
+`;
 
-const test_api = async() => {
-
-    // Example using fetch API
-    const backend_api = process.env.REACT_APP_BACKEND_URL+':'+process.env.REACT_APP_BACKEND_PORT+process.env.REACT_APP_BACKEND_API_TRUNK;
-    // fetch(backend_api)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
-    console.log('Backend API: ' + backend_api);
-
-    fetch(backend_api)
-        .then(response => response.json())
-        .then(data => {
-            const billsDiv = document.getElementById('bills');
-            data.forEach(bill => {
-                const billElement = document.createElement('div');
-                billElement.innerText = `Utility: ${bill.UtilityID}, Amount: ${bill.AmountBilled}`;
-                console.log(billElement);
-                billsDiv.appendChild(billElement);
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
-
-function AddBill() {
+function Admin() {
     
-    const addBill_url = backend_api + '/bills';
-
-    const [formData, setFormData] = useState({
-        UtilityID: '',
-        IssueDate: '',
-        AmountBilled: '',
-        AmountConsumed: '',
-        PaymentDeadline: '',
-        PaymentDate: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-        ...formData,
-        [name]: value
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const response = await fetch(addBill_url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-        });
-
-        const result = await response.json();
-        console.log(result);
-    };
+    const navigate = useNavigate();
 
     return (
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="UtilityID">Utility Type:</label>
-        <input
-            type="text"
-            id="UtilityID"
-            name="UtilityID"
-            value={formData.UtilityID}
-            onChange={handleChange}
-        /><br/>
-
-        <label htmlFor="IssueDate">Issue Date:</label>
-        <input
-            type="date"
-            id="IssueDate"
-            name="IssueDate"
-            value={formData.IssueDate}
-            onChange={handleChange}
-        /><br/>
-
-        <label htmlFor="AmountBilled">Amount Billed:</label>
-        <input
-            type="number"
-            id="AmountBilled"
-            name="AmountBilled"
-            value={formData.AmountBilled}
-            onChange={handleChange}
-        /><br/>
-
-        <label htmlFor="AmountConsumed">Amount Consumed:</label>
-        <input
-            type="number"
-            id="AmountConsumed"
-            name="AmountConsumed"
-            value={formData.AmountConsumed}
-            onChange={handleChange}
-        /><br/>
-
-        <label htmlFor="PaymentDeadline">Payment Deadline:</label>
-        <input
-            type="date"
-            id="PaymentDeadline"
-            name="PaymentDeadline"
-            value={formData.PaymentDeadline}
-            onChange={handleChange}
-        /><br/>
-
-        <label htmlFor="PaymentDate">Payment Date:</label>
-        <input
-            type="date"
-            id="PaymentDate"
-            name="PaymentDate"
-            value={formData.PaymentDate}
-            onChange={handleChange}
-        /><br/>
-
-        <button type="submit">Add Bill</button>
-        </form>
-    );
-};
-
-export default AddBill;
+        <>
+            <h1> Admin Tab </h1>
+            <Container>
+                <Stack gap={3} className="col-md-5 mx-auto">
+                    <Row>
+                        <hr/>
+                        <Col>
+                            <SpacedBadge bg="secondary">Bills</SpacedBadge>
+                            <Bills />
+                        </Col>
+                        <Col>
+                            <SpacedBadge bg="secondary">Utilities</SpacedBadge>
+                            <Utilities />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <hr/>
+                        <Col>
+                            <SpacedBadge bg="secondary">Meters</SpacedBadge>
+                            <Meters />
+                        </Col>
+                        <Col>
+                            <SpacedBadge bg="secondary">Providers</SpacedBadge>
+                            <Providers />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <hr/>
+                        <Col>
+                            <Button variant="primary" onClick={() => {navigate('/dashboard')}}>
+                                Click here to access the dashboard
+                            </Button>
+                        </Col>
+                    </Row>
+                </Stack>
+            </Container>
+        </>
+    )
+}
+export default Admin;

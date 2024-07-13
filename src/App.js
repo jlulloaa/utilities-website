@@ -1,29 +1,42 @@
-import './App.css';
-import Dashboard from './components/Dashboard';
-import AddBill from './components/admin';
+import React from 'react';
+// Because I'm using them here, I have to import them from here, not in index.js
+import {
+  Routes,
+  Route
+} from 'react-router-dom';
+
+import { BrowserRouter  as Router } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import './styles/App.css';
+
+import NavBar from './components/navbar';
+import WIP from './components/workinprogress';
+import Home from './components/home';
+import Dashboard from './components/dashboard';
+import Admin from './components/admin';
+
+import About from './components/about';
+import Footer from './components/footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={process.env.PUBLIC_URL + '/404.png'} alt="logo" />
-        <p>
-          Simple webapp to manage utility bills
-        </p>
-      <a
-        className="App-link"
-        href="https://github.com/jlulloaa/utilities-website"
-        target="_blank"
-        rel="noopener noreferrer"
-        >
-        GitHub Repository
-      </a>
-
-      </header>
-      <div id="bills">
-        <AddBill />
-      </div>
-    </div>
+    <Container className="App">
+      <Router>
+          <h1> 
+            <span> Home Utilities Management (HUM) </span>
+            <span> <h3>Web application to manage utility bills</h3></span>        
+          </h1>
+        {/* Add the navigation bar */}
+        <NavBar />
+        <Routes>
+            <Route path="/" exact element={<Home/>} />
+            <Route path="/dashboard" exact element={<Dashboard/>} />
+            <Route path="/admin" exact element={<Admin/>} />
+            <Route path="/about" exact element={<About/>} />
+          </Routes>
+        <Footer />
+      </Router>
+    </Container>
   );
 }
 
