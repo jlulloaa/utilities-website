@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { axiosInstance as axios } from '../axiosConfig';
 import { Form, Button } from 'react-bootstrap';
 import { formatDateForBackend } from '../utils/tools';
 

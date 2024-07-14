@@ -27,7 +27,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://utilities-website-frontend.s3-website-us-east-1.amazonaws.com/",
   "eslintConfig": {
     "extends": [
       "react-app",

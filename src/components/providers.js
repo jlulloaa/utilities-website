@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import axios from 'axios';
+import { axiosInstance as axios } from '../axiosConfig';
 import { Accordion, Container } from 'react-bootstrap';
 
 import { LoadingPage , formatDate } from '../utils/tools';

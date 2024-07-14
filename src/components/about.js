@@ -1,9 +1,9 @@
 import Card from './card';
-import { ApiURL } from '../utils/tools';
+import { API_URL } from '../utils/axiosConfig';
 
 const thisYear = new Date().getFullYear();
 const header = <h3>ABOUT HUM</h3>;
-const API_DOCS_URL = ApiURL + "/api-docs";
+const API_DOCS_URL = API_URL + "/api-docs";
 
 const title = <><a href="https://github.com/jlulloaa/utilities-website-frontend" target="_blank" rel="noreferrer">
     <button className="btn btn-warning">

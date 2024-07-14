@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
 
-export const ApiURL = process.env.REACT_APP_BACKEND_URL + ":" + process.env.REACT_APP_BACKEND_PORT;
-
 // Language setting taken from https://codeutility.org/javascript-how-can-i-convert-google-translate-dropdown-into-language-button-i-am-using-google_translate_element-in-react-js-stack-overflow/ 
 export const LanguageChange = () => {
     const googleTranslateElementInit = () => {

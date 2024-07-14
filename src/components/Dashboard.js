@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import axios from 'axios';
+import { axiosInstance as axios } from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import { Accordion, Button, ButtonGroup, Dropdown, Table } from 'react-bootstrap';
 
