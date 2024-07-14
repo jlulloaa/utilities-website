@@ -67,7 +67,6 @@ function NewRecord({ tableName }) {
             StartPeriod: formatDateForBackend(newRecord.StartPeriod),
             EndPeriod: formatDateForBackend(newRecord.EndPeriod),
         };
-        console.log(formattedRecord.PaymentDate);
         
         try {
             const response = await axios.post(`/api/${tableName.toLowerCase()}`, formattedRecord, { timeout: 10000, signal: AbortSignal.timeout(5000) });

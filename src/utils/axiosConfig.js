@@ -6,6 +6,5 @@ export const API_URL = process.env.REACT_APP_BACKEND_URL + ":" + process.env.REA
 
 export const axiosInstance = axios.create({
     baseURL: API_URL,
-    withCredentials: false // TRUE: If you need to send cookies or other credentials
+    withCredentials: true// TRUE: If you need to send cookies or other credentials
 });
-
