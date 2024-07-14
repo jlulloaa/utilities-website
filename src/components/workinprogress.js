@@ -1,7 +1,7 @@
 import Card from './card';
 import { Link } from 'react-router-dom';
 
-const title = <img src="./404.png" height="200" alt='iSANDEx Logo'></img>
+const title = <img src="./wip404.png" height="200" alt='iSANDEx Logo'></img>
 
 
 const body = <>
