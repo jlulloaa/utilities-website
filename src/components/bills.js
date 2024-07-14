@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
-import { axiosInstance as axios } from '../axiosConfig';
+import { axiosInstance as axios } from '../utils/axiosConfig';
 import { Accordion, Container} from 'react-bootstrap';
 
 import { LoadingPage, formatMoney, formatDate } from '../utils/tools';
